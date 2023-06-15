@@ -1,12 +1,12 @@
 version: "3.7"
 
 services:
-    runner:
-      image: tcardonne/github-runner:latest
-      environment:
-        RUNNER_NAME: "my-runner"
-        RUNNER_REPOSITORY_URL: ${RUNNER_REPOSITORY_URL}
-        #RUNNER_ORGANIZATION_URL: ${RUNNER_ORGANIZATION_URL}
-        GITHUB_ACCESS_TOKEN: ${GITHUB_ACCESS_TOKEN}
-      volumes:
-        - /var/run/docker.sock:/var/run/docker.sock
+  runner:
+    image: dockergithubrunneromni:latest
+    environment:
+      RUNNER_NAME: "Actions_pod_service"
+      RUNNER_REPOSITORY_URL: "https://github.com/Omni-Taxi-Aereo/ota-winair_erp_integration"
+      RUNNER_LABELS: "test-label1"
+      RUNNER_TOKEN: "A7X4RNK2VXVWGU4IWJOPGILERL6RE"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock

@@ -60,6 +60,20 @@ RUN curl -L -o /usr/local/bin/docker-compose \
     "https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-$(uname -s)-$(uname -m)" && \
     chmod +x /usr/local/bin/docker-compose
 
+# Install GCP CLI
+RUN echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] http://packages.cloud.google.com/apt cloud-sdk main" | tee -a /etc/apt/sources.list.d/google-cloud-sdk.list && curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key --keyring /usr/share/keyrings/cloud.google.gpg  add - && apt-get update -y && apt-get install google-cloud-cli -y
+
+# Install Kustomize
+RUN curl --silent --location --remote-name \
+    "https://github.com/kubernetes-sigs/kustomize/releases/download/kustomize/v3.2.3/kustomize_kustomize.v3.2.3_linux_amd64" && \
+    chmod a+x kustomize_kustomize.v3.2.3_linux_amd64 && \
+    sudo mv kustomize_kustomize.v3.2.3_linux_amd64 /usr/local/bin/kustomize
+
+# Install kubectl
+RUN curl -LO https://storage.googleapis.com/kubernetes-release/release/`curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt`/bin/linux/amd64/kubectl
+RUN chmod +x ./kubectl 
+RUN sudo mv ./kubectl /usr/local/bin/kubectl
+
 RUN cd /tmp && \
     curl -sL -o git.tgz \
     https://www.kernel.org/pub/software/scm/git/git-${GIT_VERSION}.tar.gz && \
