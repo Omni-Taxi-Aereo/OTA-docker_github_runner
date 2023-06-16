@@ -7,6 +7,6 @@ services:
       RUNNER_NAME: "Actions_pod_service"
       RUNNER_REPOSITORY_URL: "https://github.com/Omni-Taxi-Aereo/ota-winair_erp_integration"
       RUNNER_LABELS: "test-label1"
-      RUNNER_TOKEN: "A7X4RNK2VXVWGU4IWJOPGILERL6RE"
+      RUNNER_TOKEN: "A7X4RNMJPFDC7ANY6BSW2E3ERNROK" 
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock

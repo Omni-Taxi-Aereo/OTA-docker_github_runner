@@ -1,0 +1,52 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: configmaps-githubrunneromni
+  namespace: githubrunneromni
+data:
+    RUNNER_NAME: "Actions_pod_service"
+    RUNNER_REPOSITORY_URL: "https://github.com/Omni-Taxi-Aereo/ota-winair_erp_integration"
+    RUNNER_LABELS: "test-label1"
+
+---
+
+apiVersion: v1
+kind: Secret
+metadata:
+  name: secrets-githubrunneromni
+  namespace: githubrunneromni
+data:
+  RUNNER_TOKEN: "QTdYNFJOTUYzSUNENUtRNUJRTFBNV0xFUlJUQkc=" 
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: githubrunneromni
+  namespace: githubrunneromni
+spec:
+  selector:
+    matchLabels:
+      app: githubrunneromni
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: githubrunneromni
+    spec:
+      containers:
+      - name: githubrunneromni
+        image: europe-west4-docker.pkg.dev/maint-digitalization-22-338621/ohi-services/dockergithubrunneromni:0.0.1
+        envFrom:
+          - configMapRef:
+              name: configmaps-githubrunneromni
+          - secretRef:
+              name: secrets-githubrunneromni
+        # resources:
+        #   limits:
+        #     cpu: "1"
+        #     memory: "1Gi"
+        #   requests:
+        #     cpu: "0.5"
+        #     memory: "512Mi"
