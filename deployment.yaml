@@ -16,7 +16,7 @@ metadata:
   name: secrets-githubrunneromni
   namespace: githubrunneromni
 data:
-  RUNNER_TOKEN: "QTdYNFJOTUYzSUNENUtRNUJRTFBNV0xFUlJUQkc=" 
+  RUNNER_TOKEN: "QTdYNFJOTEFWVUg3TFdaWU5TMkFLTjNFUlIyQTY=" 
 
 ---
 
@@ -50,3 +50,11 @@ spec:
         #   requests:
         #     cpu: "0.5"
         #     memory: "512Mi"
+        volumeMounts:
+          - name: docker-sock
+            mountPath: /var/run/docker.sock
+      volumes:
+        - name: docker-sock
+          hostPath:
+            path: /var/run/docker.sock
+        
