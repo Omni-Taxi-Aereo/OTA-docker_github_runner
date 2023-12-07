@@ -16,7 +16,7 @@ metadata:
   name: secrets-githubrunneromni
   namespace: githubrunneromni
 data:
-  RUNNER_TOKEN: "QTdYNFJOTEFWVUg3TFdaWU5TMkFLTjNFUlIyQTY=" 
+  RUNNER_TOKEN: "QTVPNEFFVU9FRkVLQjVXNkk2UVRDUDNGT0laNjQK" 
 
 ---
 
