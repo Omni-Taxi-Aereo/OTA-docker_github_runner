@@ -5,7 +5,7 @@ metadata:
   namespace: githubrunneromni
 data:
     RUNNER_NAME: "Actions_pod_service"
-    RUNNER_REPOSITORY_URL: "https://github.com/Omni-Taxi-Aereo/ota-winair_erp_integration"
+    RUNNER_REPOSITORY_URL: "https://github.com/Omni-Taxi-Aereo/OTA-Winair_ERP_Integration"
     RUNNER_LABELS: "test-label1"
 
 ---
